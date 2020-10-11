@@ -24,6 +24,13 @@ OFFSET_TABLES = (
     {'w': 4, 'o': 1, 'n': 2, ' ': 3},
 )
 
+PI_TABLES = (
+    [0, 0, 0, 0, 0, 1, 1],
+    [0, 0, 0, 0],
+    [0, 0, 1, 2],
+    [0, 0, 0, 0],
+)
+
 POSITIONS = (12, 14, -1, 29)
 
 
@@ -37,4 +44,15 @@ def test_offset_table(needle, expected_table):
 @pytest.mark.parametrize('needle, haystack, expected_position', zip(NEEDLES, HAYSTACKS, POSITIONS))
 def test_boyer_moore(needle, haystack, expected_position):
     position = boyer_moore(needle, haystack)
+    assert position == expected_position
+
+@pytest.mark.parametrize('needle, expected_pi', zip(NEEDLES, PI_TABLES))
+def test_pi_function_table(needle, expected_pi):
+    pi_table = get_pi_function(needle)
+    assert pi_table == expected_pi
+
+
+@pytest.mark.parametrize('needle, haystack, expected_position', zip(NEEDLES, HAYSTACKS, POSITIONS))
+def test_kmp(needle, haystack, expected_position):
+    position = kmp(needle, haystack)
     assert position == expected_position

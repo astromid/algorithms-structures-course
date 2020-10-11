@@ -1,9 +1,11 @@
-from typing import Dict
 from collections import defaultdict
+from typing import Dict
+
 from .utils import CmpCountStr
 
 
 def get_offset_table(pattern: CmpCountStr) -> Dict[str, int]:
+    '''Calculate offset table for the pattern.'''
     # default value for other chars - lenght of needle string
     offset_table = defaultdict(lambda: len(pattern))
     # don't count last char
