@@ -29,20 +29,20 @@ def kmp(needle: CmpCountStr, haystack: CmpCountStr) -> int:
     # 2 шаг - substring search
     position = -1
     # we use 2 position indexes
-    current_needle_pos, current_haystack_pos = 0, 0
-    while current_haystack_pos < len(haystack):
-        if needle[current_needle_pos] == haystack[current_haystack_pos]:
+    needle_pos, haystack_pos = 0, 0
+    while haystack_pos < len(haystack):
+        if needle[needle_pos] == haystack[haystack_pos]:
             # if we have a coincidence and needle_pos + 1 = len(needle), we have our substring
-            if current_needle_pos == len(needle) - 1:
-                position = current_haystack_pos - len(needle) + 1
+            if needle_pos == len(needle) - 1:
+                position = haystack_pos - len(needle) + 1
                 break
             # otherwise, continue to compare chars
-            current_needle_pos += 1
-            current_haystack_pos += 1
+            needle_pos += 1
+            haystack_pos += 1
         # if needle postion is already zero we need just to shift pattern forward
-        elif current_needle_pos == 0:
-            current_haystack_pos += 1
+        elif needle_pos == 0:
+            haystack_pos += 1
         # otherwise, we use position for previous success char in prefix function table
         else:
-            current_needle_pos = pi_func[current_needle_pos - 1]
+            needle_pos = pi_func[needle_pos - 1]
     return position

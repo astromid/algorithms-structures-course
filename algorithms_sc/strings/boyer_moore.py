@@ -26,7 +26,7 @@ def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> int:
         was_coincidence = False
         # compare in reverse order
         for idx in reversed(range(len(needle))):
-            if haystack[current_pos + idx] == needle[idx]:
+            if needle[idx] == haystack[current_pos + idx]:
                 was_coincidence = True
             else:
                 # we need to shift our position in haystack and break inner cycle

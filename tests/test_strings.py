@@ -1,7 +1,7 @@
-from algorithms_sc.strings.boyer_moore import get_offset_table, boyer_moore
+import pytest
+from algorithms_sc.strings.boyer_moore import boyer_moore, get_offset_table
 from algorithms_sc.strings.kmp import get_pi_function, kmp
 from algorithms_sc.strings.utils import CmpCountStr
-import pytest
 
 NEEDLES = (
     CmpCountStr('success'),

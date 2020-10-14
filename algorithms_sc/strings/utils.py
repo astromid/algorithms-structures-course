@@ -1,3 +1,5 @@
+from typing import Optional
+
 from numpy.random import default_rng
 
 ALPHABET = ('G', 'A', 'V', 'I', 'L', 'P', 'S', 'T', 'C', 'M', 'D', 'N', 'E', 'Q', 'K', 'R', 'H', 'F', 'Y', 'W')
@@ -16,10 +18,6 @@ class CmpCountStr(str):
         CmpCountStr.cmp_counter += 1
         return self.string.__eq__(other)
     
-    def __ne__(self, other: object) -> bool:
-        CmpCountStr.cmp_counter += 1
-        return self.string.__ne__(other)
-    
     def __getitem__(self, sl: slice):
         return CmpCountStr(self.string[sl])
     
@@ -30,7 +28,7 @@ class CmpCountStr(str):
         return hash(self.string)
 
 
-def generate_protein_text(length: int) -> CmpCountStr:
-    rng = default_rng()
+def generate_protein_text(length: int, seed: Optional[int] = None) -> CmpCountStr:
+    rng = default_rng(seed=seed)
     chars = rng.choice(ALPHABET, size=length)
     return CmpCountStr(''.join(chars))
