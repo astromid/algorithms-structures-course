@@ -1,3 +1,5 @@
+from typing import List
+
 import pytest
 from algorithms_sc.strings.boyer_moore import boyer_moore, get_offset_table
 from algorithms_sc.strings.kmp import get_pi_function, kmp
@@ -35,24 +37,24 @@ POSITIONS = (12, 14, -1, 29)
 
 
 @pytest.mark.parametrize('needle, expected_table', zip(NEEDLES, OFFSET_TABLES))
-def test_offset_table(needle, expected_table):
+def test_offset_table(needle: CmpCountStr, expected_table: List[int]) -> None:
     offset_table = get_offset_table(needle)
     for key in offset_table.keys():
         assert offset_table[key] == expected_table[key]
 
 
 @pytest.mark.parametrize('needle, haystack, expected_position', zip(NEEDLES, HAYSTACKS, POSITIONS))
-def test_boyer_moore(needle, haystack, expected_position):
+def test_boyer_moore(needle: CmpCountStr, haystack: CmpCountStr, expected_position: int) -> None:
     position = boyer_moore(needle, haystack)
     assert position == expected_position
 
 @pytest.mark.parametrize('needle, expected_pi', zip(NEEDLES, PI_TABLES))
-def test_pi_function_table(needle, expected_pi):
+def test_pi_function_table(needle: CmpCountStr, expected_pi: List[int]) -> None:
     pi_table = get_pi_function(needle)
     assert pi_table == expected_pi
 
 
 @pytest.mark.parametrize('needle, haystack, expected_position', zip(NEEDLES, HAYSTACKS, POSITIONS))
-def test_kmp(needle, haystack, expected_position):
+def test_kmp(needle: CmpCountStr, haystack: CmpCountStr, expected_position: int) -> None:
     position = kmp(needle, haystack)
     assert position == expected_position

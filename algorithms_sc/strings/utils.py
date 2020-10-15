@@ -29,6 +29,15 @@ class CmpCountStr(str):
 
 
 def generate_protein_text(length: int, seed: Optional[int] = None) -> CmpCountStr:
+    '''Generates random text of given length.
+
+    Args:
+        length (int): length of the string to generate
+        seed (Optional[int], optional): random seed. Defaults to None.
+
+    Returns:
+        CmpCountStr: generated string
+    '''
     rng = default_rng(seed=seed)
     chars = rng.choice(ALPHABET, size=length)
     return CmpCountStr(''.join(chars))
