@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict
+from typing import Dict, List
 
 from .utils import CmpCountStr
 
@@ -21,7 +21,7 @@ def get_offset_table(pattern: CmpCountStr) -> Dict[str, int]:
     return offset_table
 
 
-def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> int:
+def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
     '''Performs search of string in text with Boyer-Moore algorithm.
 
     Args:
@@ -29,12 +29,12 @@ def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> int:
         haystack (CmpCountStr): string (text) to search in
 
     Returns:
-        int: position of first entry of substring in string (-1 if there's no substring in string)
+        List[int]: positions of entries of substring in string (empty if there's no substring in string)
     '''
 
     offset_table = get_offset_table(needle)
     
-    position = -1
+    positions = []
     current_pos = 0
     while current_pos < len(haystack) - len(needle) + 1:
         # successful comparsion flag
@@ -55,6 +55,7 @@ def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> int:
                 break
         # if there wasn't break - we find needle in current position
         else:
-            position = current_pos
-            break
-    return position
+            positions.append(current_pos)
+            current_pos += 1
+            continue
+    return positions
