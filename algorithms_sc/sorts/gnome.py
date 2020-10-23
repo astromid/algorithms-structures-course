@@ -2,14 +2,14 @@ from typing import List
 
 
 def gnome_sort(lst: List[int]) -> List[int]:
-    '''Sorts a list with int values using Gnome sort algorithm.
+    """Sorts a list with int values using Gnome sort algorithm.
 
     Args:
         lst (List[int]): list of integers
 
     Returns:
         List[int]: sorted (in ascending order) list of integers
-    '''
+    """
     lst = lst.copy()
 
     idx = 1

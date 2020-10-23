@@ -11,7 +11,7 @@ def one_bubble_step(lst: List[int], ascending=True) -> List[int]:
 
 
 def generate_stand(length: int) -> List[List[int]]:
-    stand = []
+    stand: List[List[int]] = []
     random_list = random.sample(range(length ** 2), length)
     sorted_list = sorted(random_list)
     reversed_sorted_list = list(reversed(sorted_list))
@@ -20,9 +20,6 @@ def generate_stand(length: int) -> List[List[int]]:
     for _ in range(length):
         partially_sorted_list = one_bubble_step(partially_sorted_list, ascending=False)
         stand.append(partially_sorted_list)
-        
-        if partially_sorted_list == reversed_sorted_list:
-            break
     
     stand = list(reversed(stand))
     # central element of the stand
@@ -32,7 +29,4 @@ def generate_stand(length: int) -> List[List[int]]:
     for _ in range(length):
         partially_sorted_list = one_bubble_step(partially_sorted_list)
         stand.append(partially_sorted_list)
-
-        if partially_sorted_list == sorted_list:
-            break
     return stand
