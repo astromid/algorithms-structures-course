@@ -6,7 +6,7 @@ ALPHABET = ('G', 'A', 'V', 'I', 'L', 'P', 'S', 'T', 'C', 'M', 'D', 'N', 'E', 'Q'
 
 
 class CmpCountStr(str):
-    '''String wrapper class with comparsion counter.'''
+    """String wrapper class with comparsion counter."""
 
     cmp_counter = 0
 
@@ -29,7 +29,7 @@ class CmpCountStr(str):
 
 
 def generate_protein_text(length: int, seed: Optional[int] = None) -> CmpCountStr:
-    '''Generates random text of given length.
+    """Generates random text of given length.
 
     Args:
         length (int): length of the string to generate
@@ -37,7 +37,7 @@ def generate_protein_text(length: int, seed: Optional[int] = None) -> CmpCountSt
 
     Returns:
         CmpCountStr: generated string
-    '''
+    """
     rng = default_rng(seed=seed)
     chars = rng.choice(ALPHABET, size=length)
     return CmpCountStr(''.join(chars))

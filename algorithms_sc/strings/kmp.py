@@ -4,14 +4,14 @@ from .utils import CmpCountStr
 
 
 def get_pi_function(pattern: CmpCountStr) -> List[int]:
-    '''Calculate prefix function for pattern string.
+    """Calculate prefix function for pattern string.
 
     Args:
         pattern (CmpCountStr): pattern string
 
     Returns:
         List[int]: List with values of prefix function
-    '''
+    """
     pi_func = [0] * len(pattern)
     prefix_pos, suffix_pos = 0, 1
     while suffix_pos < len(pattern):
@@ -31,7 +31,7 @@ def get_pi_function(pattern: CmpCountStr) -> List[int]:
 
 
 def kmp(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
-    '''Performs search of string in text with Knuth-Morris-Pratt algorithm.
+    """Performs search of string in text with Knuth-Morris-Pratt algorithm.
 
     Args:
         needle (CmpCountStr): substring to search
@@ -39,7 +39,7 @@ def kmp(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
 
     Returns:
         List[int]: positions of entries of substring in string (empty if there's no substring in string)
-    '''
+    """
     # 1 шаг - prefix function calculation
     pi_func = get_pi_function(needle)
     # 2 шаг - substring search
@@ -49,7 +49,7 @@ def kmp(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
     while haystack_pos < len(haystack):
         if needle[needle_pos] == haystack[haystack_pos]:
             # if we have a coincidence and needle_pos + 1 = len(needle), we have our substring
-            if needle_pos == len(needle) - 1:
+            if needle_pos + 1 == len(needle):
                 positions.append(haystack_pos - len(needle) + 1)
                 needle_pos = 0
                 continue

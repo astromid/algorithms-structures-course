@@ -10,8 +10,6 @@ def gnome_sort(lst: List[int]) -> List[int]:
     Returns:
         List[int]: sorted (in ascending order) list of integers
     """
-    lst = lst.copy()
-
     idx = 1
     reversal_index = 2
     while idx < len(lst):

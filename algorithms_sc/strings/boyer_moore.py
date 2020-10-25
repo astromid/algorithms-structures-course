@@ -5,14 +5,14 @@ from .utils import CmpCountStr
 
 
 def get_offset_table(pattern: CmpCountStr) -> Dict[str, int]:
-    '''Calculate offset table for the pattern.'
+    """Calculate offset table for the pattern.'
 
     Args:
         pattern (CmpCountStr): pattern string
 
     Returns:
         Dict[str, int]: Dictionary with offset value for each char
-    '''
+    """
     # default value for other chars - lenght of needle string
     offset_table = defaultdict(lambda: len(pattern))
     # don't count last char
@@ -22,7 +22,7 @@ def get_offset_table(pattern: CmpCountStr) -> Dict[str, int]:
 
 
 def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
-    '''Performs search of string in text with Boyer-Moore algorithm.
+    """Performs search of string in text with Boyer-Moore algorithm.
 
     Args:
         needle (CmpCountStr): substring to search
@@ -30,10 +30,9 @@ def boyer_moore(needle: CmpCountStr, haystack: CmpCountStr) -> List[int]:
 
     Returns:
         List[int]: positions of entries of substring in string (empty if there's no substring in string)
-    '''
-
+    """
     offset_table = get_offset_table(needle)
-    
+
     positions = []
     current_pos = 0
     while current_pos < len(haystack) - len(needle) + 1:
