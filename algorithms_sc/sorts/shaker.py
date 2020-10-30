@@ -18,7 +18,7 @@ def shaker_sort(lst: List[int]) -> List[int]:
             if lst[idx] > lst[idx+1]:
                 lst[idx], lst[idx+1] = lst[idx+1], lst[idx]
                 right_bound = idx + 1
-        
+
         left_bound += 1
         # backward shaker step
         for idx in range(right_bound - 1, left_bound - 1, -1):

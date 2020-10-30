@@ -4,8 +4,8 @@ from typing import List
 import pytest
 from algorithms_sc.sorts import gnome_sort, shaker_sort
 
-TEST_LEN = 250
-TEST_NUM = 100
+TEST_LEN = 300
+TEST_NUM = 200
 
 TEST_ARRAYS = [random.sample(range(TEST_LEN ** 2), TEST_LEN) for _ in range(TEST_NUM)]
 EXPECTED = [sorted(array) for array in TEST_ARRAYS]

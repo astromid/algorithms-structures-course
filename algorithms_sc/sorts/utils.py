@@ -38,6 +38,8 @@ def generate_stand(length: int) -> List[List[int]]:
         partially_sorted_list = one_bubble_step(partially_sorted_list, ascending=False)
         stand.append(partially_sorted_list)
     
+    assert partially_sorted_list == reversed_sorted_list
+    
     stand = list(reversed(stand))
     # central element of the stand
     stand.append(random_list)
@@ -46,4 +48,6 @@ def generate_stand(length: int) -> List[List[int]]:
     for _ in range(length):
         partially_sorted_list = one_bubble_step(partially_sorted_list)
         stand.append(partially_sorted_list)
+    
+    assert partially_sorted_list == sorted_list
     return stand
